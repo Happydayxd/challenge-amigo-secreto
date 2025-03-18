@@ -16,8 +16,6 @@ Este proyecto se creó como parte de un desafío de desarrollo, aplicando concep
 ✔️ Interfaz moderna: Animaciones y diseño mejorado con CSS.
 🖥️ Capturas de pantalla
 
-![alt text](<Screenshot 2025-03-18 231901.png>)
-
 🚀 Tecnologías utilizadas
 
 El proyecto fue desarrollado utilizando las siguientes tecnologías:
