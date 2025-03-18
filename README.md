@@ -38,9 +38,9 @@ cd challenge-amigo-secreto
 2️⃣ Abrir el archivo index.html en un navegador web.
 🔧 Estructura del proyecto
 
-📂 challenge-amigo-secreto/
-├── 📜 index.html → Página principal
-├── 🎨 style.css → Estilos de la interfaz
-├── 📜 app.js → Código JavaScript del proyecto
-├── 📂 assets/ → Imágenes y recursos
-└── 📜 README.md → Documentación
+##📂 challenge-amigo-secreto/
+ 📜 index.html → Página principal
+ 🎨 style.css → Estilos de la interfaz
+ 📜 app.js → Código JavaScript del proyecto
+ 📂 assets/ → Imágenes y recursos
+ 📜 README.md → Documentación
