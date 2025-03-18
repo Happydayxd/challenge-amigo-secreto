@@ -1,7 +1,7 @@
 // Paso 1: Declarar el array vacío para almacenar los nombres
 let amigos = [];
 
-// Paso 2: Implementar la función para agregar amigos
+// Paso 2 y 3: Implementar función para agregar amigos con validación de duplicados
 function agregarAmigo() {
     let inputNombre = document.getElementById("amigo");
     let listaAmigos = document.getElementById("listaAmigos");
@@ -10,6 +10,12 @@ function agregarAmigo() {
 
     if (nombre === "") {
         alert("Por favor, inserte un nombre.");
+        return;
+    }
+
+    // Verificar si el nombre ya está en la lista
+    if (amigos.includes(nombre)) {
+        alert("Este nombre ya está en la lista.");
         return;
     }
 
