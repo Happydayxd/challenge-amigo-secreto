@@ -29,14 +29,31 @@ function agregarAmigo() {
     inputNombre.value = "";
 }
 
-// Función para actualizar la lista en la interfaz
+// Paso 4: Función para actualizar la lista en la interfaz con botones de eliminación
 function actualizarLista() {
     let listaAmigos = document.getElementById("listaAmigos");
     listaAmigos.innerHTML = ""; // Limpiar lista antes de actualizar
 
-    amigos.forEach(amigo => {
+    amigos.forEach((amigo, index) => {
         let nuevoElemento = document.createElement("li");
         nuevoElemento.textContent = amigo;
+
+        // Crear botón de eliminación ❌
+        let botonEliminar = document.createElement("button");
+        botonEliminar.textContent = "❌";
+        botonEliminar.classList.add("boton-eliminar");
+        botonEliminar.onclick = function () {
+            eliminarAmigo(index);
+        };
+
+        // Agregar el botón al elemento de la lista
+        nuevoElemento.appendChild(botonEliminar);
         listaAmigos.appendChild(nuevoElemento);
     });
+}
+
+// Paso 4: Función para eliminar un amigo de la lista
+function eliminarAmigo(index) {
+    amigos.splice(index, 1); // Eliminar amigo del array
+    actualizarLista(); // Actualizar la lista en la interfaz
 }
