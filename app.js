@@ -1,11 +1,13 @@
 // Paso 1: Declarar el array vacío para almacenar los nombres
 let amigos = [];
 
-// Paso 2, 3, 4: Implementar función para agregar amigos con validación y eliminación
-function agregarAmigo() {
-    let inputNombre = document.getElementById("amigo");
-    let listaAmigos = document.getElementById("listaAmigos");
+// Elementos del DOM (Accesibles solo una vez para optimizar rendimiento)
+const inputNombre = document.getElementById("amigo");
+const listaAmigos = document.getElementById("listaAmigos");
+const resultado = document.getElementById("resultado");
 
+// Paso 2-6: Implementar función para agregar amigos con validación y eliminación
+function agregarAmigo() {
     let nombre = inputNombre.value.trim(); 
 
     if (nombre === "") {
@@ -23,10 +25,17 @@ function agregarAmigo() {
     inputNombre.value = "";
 }
 
-// Función para actualizar la lista en la interfaz con animaciones
+// Permitir agregar con "Enter"
+inputNombre.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        agregarAmigo();
+    }
+});
+
+// Función optimizada para actualizar la lista con `documentFragment`
 function actualizarLista() {
-    let listaAmigos = document.getElementById("listaAmigos");
-    listaAmigos.innerHTML = ""; 
+    listaAmigos.innerHTML = "";  
+    let fragment = document.createDocumentFragment();
 
     amigos.forEach((amigo, index) => {
         let nuevoElemento = document.createElement("li");
@@ -36,29 +45,23 @@ function actualizarLista() {
         let botonEliminar = document.createElement("button");
         botonEliminar.textContent = "❌";
         botonEliminar.classList.add("boton-eliminar");
-        botonEliminar.onclick = function () {
-            eliminarAmigo(index, nuevoElemento);
-        };
+        botonEliminar.setAttribute("aria-label", `Eliminar a ${amigo} de la lista`);
+        botonEliminar.onclick = () => eliminarAmigo(index);
 
         nuevoElemento.appendChild(botonEliminar);
-        listaAmigos.appendChild(nuevoElemento);
-
-        // Quitar la clase de animación después de 300ms
-        setTimeout(() => nuevoElemento.classList.remove("added"), 300);
+        fragment.appendChild(nuevoElemento);
     });
+
+    listaAmigos.appendChild(fragment); // Evita repintados innecesarios en el DOM
 }
 
 // Función para eliminar un amigo con animación
-function eliminarAmigo(index, elemento) {
-    elemento.classList.add("removed"); // Agregar animación de eliminación
-
-    setTimeout(() => {
-        amigos.splice(index, 1);
-        actualizarLista();
-    }, 300); // Esperar la animación antes de actualizar la lista
+function eliminarAmigo(index) {
+    amigos.splice(index, 1);
+    actualizarLista();
 }
 
-// Paso 5 y 6: Implementar el sorteo aleatorio con animación
+// Paso 5 y 6: Implementar el sorteo aleatorio con optimización
 function sortearAmigo() {
     if (amigos.length === 0) {
         alert("No hay amigos en la lista para sortear.");
@@ -68,11 +71,8 @@ function sortearAmigo() {
     let indiceAleatorio = Math.floor(Math.random() * amigos.length);
     let amigoSorteado = amigos[indiceAleatorio];
 
-    let resultado = document.getElementById("resultado");
     resultado.innerHTML = `<p>🎉 El amigo secreto es: <strong>${amigoSorteado}</strong> 🎉</p>`;
+    resultado.classList.add("show");
 
-    resultado.classList.add("show"); // Aplicar animación
-
-    // Remover la animación después de 2 segundos
     setTimeout(() => resultado.classList.remove("show"), 2000);
 }
