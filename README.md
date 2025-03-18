@@ -17,7 +17,7 @@ Este proyecto es una aplicación web interactiva que permite a los usuarios agre
 
 ## 📸 Capturas de Pantalla
 
-(Coloca aquí imágenes del proyecto)
+
 
 ## 🎯 Cómo Ejecutar el Proyecto
 
