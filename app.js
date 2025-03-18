@@ -1,7 +1,7 @@
 // Paso 1: Declarar el array vacío para almacenar los nombres
 let amigos = [];
 
-// Paso 2 y 3: Implementar función para agregar amigos con validación de duplicados
+// Paso 2, 3 y 4: Implementar función para agregar amigos con validación y eliminación
 function agregarAmigo() {
     let inputNombre = document.getElementById("amigo");
     let listaAmigos = document.getElementById("listaAmigos");
@@ -13,32 +13,25 @@ function agregarAmigo() {
         return;
     }
 
-    // Verificar si el nombre ya está en la lista
     if (amigos.includes(nombre)) {
         alert("Este nombre ya está en la lista.");
         return;
     }
 
-    // Agregar el nombre al array
     amigos.push(nombre);
-
-    // Actualizar la lista visualmente
     actualizarLista();
-
-    // Limpiar el campo de entrada
     inputNombre.value = "";
 }
 
-// Paso 4: Función para actualizar la lista en la interfaz con botones de eliminación
+// Función para actualizar la lista en la interfaz con botones de eliminación
 function actualizarLista() {
     let listaAmigos = document.getElementById("listaAmigos");
-    listaAmigos.innerHTML = ""; // Limpiar lista antes de actualizar
+    listaAmigos.innerHTML = ""; 
 
     amigos.forEach((amigo, index) => {
         let nuevoElemento = document.createElement("li");
         nuevoElemento.textContent = amigo;
 
-        // Crear botón de eliminación ❌
         let botonEliminar = document.createElement("button");
         botonEliminar.textContent = "❌";
         botonEliminar.classList.add("boton-eliminar");
@@ -46,14 +39,28 @@ function actualizarLista() {
             eliminarAmigo(index);
         };
 
-        // Agregar el botón al elemento de la lista
         nuevoElemento.appendChild(botonEliminar);
         listaAmigos.appendChild(nuevoElemento);
     });
 }
 
-// Paso 4: Función para eliminar un amigo de la lista
+// Función para eliminar un amigo de la lista
 function eliminarAmigo(index) {
-    amigos.splice(index, 1); // Eliminar amigo del array
-    actualizarLista(); // Actualizar la lista en la interfaz
+    amigos.splice(index, 1);
+    actualizarLista();
+}
+
+// Paso 5: Implementar el sorteo aleatorio
+function sortearAmigo() {
+    if (amigos.length === 0) {
+        alert("No hay amigos en la lista para sortear.");
+        return;
+    }
+
+    let indiceAleatorio = Math.floor(Math.random() * amigos.length);
+    let amigoSorteado = amigos[indiceAleatorio];
+
+    // Mostrar el nombre sorteado en pantalla
+    let resultado = document.getElementById("resultado");
+    resultado.innerHTML = `<p>🎉 El amigo secreto es: <strong>${amigoSorteado}</strong> 🎉</p>`;
 }
