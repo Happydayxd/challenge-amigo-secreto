@@ -74,5 +74,5 @@ function sortearAmigo() {
     resultado.innerHTML = `<p>🎉 El amigo secreto es: <strong>${amigoSorteado}</strong> 🎉</p>`;
     resultado.classList.add("show");
 
-    setTimeout(() => resultado.classList.remove("show"), 2000);
+    //setTimeout(() => resultado.classList.remove("show"), 15000);
 }
