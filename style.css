@@ -134,12 +134,21 @@ ul {
     margin: 20px 0;
 }
 
+/* Animación para mostrar el resultado */
 .result-list {
     margin-top: 15px;
     color: #05DF05;
     font-size: 22px;
     font-weight: bold;
     text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Mostrar el resultado con animación */
+.result-list.show {
+    opacity: 1;
+    transform: scale(1.1);
 }
 
 /* Botón de sortear título */
@@ -166,6 +175,7 @@ ul {
     padding: 0;
 }
 
+/* Efecto de aparición para la lista de amigos */
 .name-list li {
     display: flex;
     justify-content: space-between;
@@ -176,6 +186,19 @@ ul {
     width: 250px;
     border-radius: 5px;
     font-weight: bold;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* Efecto cuando se añade un nuevo nombre */
+.name-list li.added {
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+/* Animación para eliminar nombres */
+.name-list li.removed {
+    transform: scale(0.9);
+    opacity: 0;
 }
 
 .boton-eliminar {
