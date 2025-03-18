@@ -5,6 +5,8 @@
 Este proyecto se creó como parte de un desafío de desarrollo, aplicando conceptos de JavaScript, manipulación del DOM y optimización del rendimiento. 🚀
 📌 Funcionalidades
 
+🔗 **[Ver la aplicación en GitHub Pages](https://happydayxd.github.io/challenge-amigo-secreto/)**
+
 ✔️ Agregar nombres: Ingresa un nombre en el campo de texto y añádelo a la lista.
 ✔️ Validación: Se muestra un mensaje si el campo está vacío o si el nombre ya está en la lista.
 ✔️ Eliminar nombres: Cada amigo agregado tiene un botón ❌ para eliminarlo.
